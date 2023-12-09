@@ -1,0 +1,374 @@
+function gGET(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+function sGET(key,value,uri) {
+    if (!uri) uri = window.location.href;
+    var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+    var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+    if (uri.match(re)) {
+        return uri.replace(re, '$1' + key + "=" + value + '$2');
+    }
+    else {
+        return uri + separator + key + "=" + value;
+    }
+}
+
+
+jQuery(document).ready(function($){
+	// browser window scroll (in pixels) after which the "back to top" link is shown
+	var offset = 300,
+		//browser window scroll (in pixels) after which the "back to top" link opacity is reduced
+		offset_opacity = 1200,
+		//duration of the top scrolling animation (in ms)
+		scroll_top_duration = 700,
+		//grab the "back to top" link
+		$back_to_top = $('.cd-top');
+
+	//hide or show the "back to top" link
+	$(window).scroll(function(){
+		( $(this).scrollTop() > offset ) ? $back_to_top.addClass('cd-is-visible') : $back_to_top.removeClass('cd-is-visible cd-fade-out');
+		if( $(this).scrollTop() > offset_opacity ) { 
+			$back_to_top.addClass('cd-fade-out');
+		}
+	});
+
+	//smooth scroll to top
+	$back_to_top.on('click', function(event){
+		event.preventDefault();
+		$('body,html').animate({
+			scrollTop: 0 ,
+		 	}, scroll_top_duration
+		);
+	});
+
+});
+
+function getJson(str) {
+    var parse;
+    try {
+        parse = JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return parse;
+}
+
+function json_decode(str){
+    return getJson(str);
+}
+
+
+var lastDropModal;
+
+function alert_error(title,options){
+
+    if(lastDropModal != '' && $("#"+lastDropModal).css("display")=="block"){
+        swal({
+            type:"error",
+            title:warning_modal_title,
+            text:title,
+            timer: options.timer != undefined ? options.timer : false,
+        });
+
+        return false;
+    }
+
+    if(document.getElementById("modal-alert")) $("#modal-alert").remove();
+    $("body").append('<div id="modal-alert" class="iziModal"></div>');
+
+    var subtitle;
+    if(title.length>80){
+        subtitle    = title;
+        title       = warning_modal_title;
+    }
+    $("#modal-alert").iziModal('destroy');
+    $("#modal-alert").iziModal({
+        overlay:false,
+        title: title,
+        subtitle:subtitle,
+        icon: 'fa fa-ban',
+        headerColor: '#CC0000',
+        width: 600,
+        timeout: typeof options == "object" && options.timer != undefined ? options.timer : false,
+        timeoutProgressbar: typeof options == "object" && options.timer != undefined ? true : false,
+        transitionIn: 'fadeInDown',
+        transitionOut: 'fadeOutDown',
+        loop: true,
+        pauseOnHover: true,
+        history:false,
+        onResize: function(){
+            return false;
+        },
+    });
+    $("#modal-alert").iziModal('open');
+}
+
+function alert_success(title,options){
+
+    if(lastDropModal != '') close_modal(lastDropModal);
+
+    if(document.getElementById("modal-alert")) $("#modal-alert").remove();
+    $("body").append('<div id="modal-alert" class="iziModal"></div>');
+
+    var subtitle;
+    if(title.length>80){
+        subtitle    = title;
+        title       = success_modal_title;
+    }
+
+    $("#modal-alert").iziModal('destroy');
+    $("#modal-alert").iziModal({
+        overlay:false,
+        title: title,
+        subtitle:subtitle,
+        icon: 'fa fa-check',
+        headerColor: '#50B800',
+        width: 600,
+        timeout: typeof options == "object" && options.timer != undefined ? options.timer : false,
+        timeoutProgressbar: typeof options == "object" && options.timer != undefined ? true : false,
+        transitionIn: 'fadeInDown',
+        transitionOut: 'fadeOutDown',
+        loop: true,
+        pauseOnHover: true,
+        history:false,
+    });
+    $("#modal-alert").iziModal('open');
+}
+
+function close_modal(modal_id,modal_class){
+    if(modal_id != '') $("#"+modal_id).iziModal('close');
+    if(modal_class != '') $("."+modal_class).iziModal('close');
+}
+
+function get_modal_options_generate(options){
+    if(!options || typeof options != "object") options = {};
+    var modal_options   = {
+        transitionIn: 'fadeInDown',
+        transitionOut: 'fadeOutDown',
+        bodyOverflow: true,
+        history:false,
+        appendTo:false,
+    };
+    return $.extend( options, modal_options);
+}
+
+function open_modal(modal_id,options){
+    lastDropModal = modal_id;
+
+    $("#"+modal_id).iziModal('destroy');
+    $("#"+modal_id).iziModal(get_modal_options_generate(options));
+
+    $("#"+modal_id).iziModal('open');
+}
+
+
+function MioAjaxElement(element,external_options){
+    var button = $(element);
+    if(button.attr("data-pending") != undefined) {
+        console.log("Please your wait... Button pending");
+    }else{
+        var output,option,options;
+
+        if(external_options){
+            options = external_options;
+        }else{
+            option = button.attr("mio-ajax-options");
+            options = getJson(option);
+        }
+
+        if(options != undefined && options.before_function != undefined){
+            var beforeCall = window[options.before_function]();
+            if(!beforeCall) return false;
+        }
+
+        if(options != undefined && options.type == "direct"){
+            button.attr("data-pending","true");
+
+            if(options != undefined && options.waiting_text != undefined && options.waiting_text != ''){
+                var before_text  = button.html();
+                button.html(options.waiting_text);
+            }
+            output = options.result;
+            var wmethod = (options.method != undefined && options.method != '') ? options.method : "GET";
+            var wdata   = (options.data != undefined && options.data != '') ? options.data : false;
+            $.ajax({
+                url:options.action,
+                method:wmethod,
+                data:wdata,
+            }).done(function (result) {
+                button.removeAttr("data-pending");
+                if(options != undefined && options.waiting_text != undefined && options.waiting_text != ''){
+                    button.html(before_text);
+                }
+
+                if(!document.getElementById(output)){
+                    window[output](result);
+                }else{
+                    $("#"+output).html(result);
+                    $("#"+output).fadeIn(400);
+                }
+            }).fail(function() {
+                console.log("Failed Request! URL Address: "+options.action);
+            });
+
+        }else{
+
+            button.attr("data-pending","true");
+
+            var form = options.form != undefined ? options.form : $(element).closest("form");
+            var form_id = form.attr("id");
+
+            if(options != undefined && options.result != undefined) output = options.result;
+            else output = "mio_success";
+
+            var file_upload = false;
+
+            $("#"+form_id+" input:file").each(function (key, item) {
+                var val = $(item).val();
+                if(val != undefined && val != ''){
+                    file_upload = true;
+                }
+            });
+
+
+            var before_text  = button.html();
+            var replace_button_text = false;
+
+            if(options != undefined && options.progress_text != undefined && options.progress_text != ''){
+                var progress_text = options.progress_text;
+                progress_text = progress_text.replace('{progress}','<span id="percent">0%</span>');
+            }
+
+            if(options != undefined && options.waiting_text != undefined && options.waiting_text != ''){
+                var waiting_text = options.waiting_text;
+            }
+
+            if(waiting_text != undefined && waiting_text != '')
+                replace_button_text = waiting_text;
+
+            if(file_upload && progress_text != undefined && progress_text != '')
+                replace_button_text = progress_text;
+
+
+            if(replace_button_text != undefined && replace_button_text && replace_button_text != '')
+                button.html(replace_button_text);
+
+
+            if(file_upload){
+                var bar = $("#"+form_id+" #bar");
+                var percent = $("#"+form_id+" #percent");
+            }
+
+            $(form).ajaxForm({
+                beforeSend: function() {
+                    if(file_upload){
+                        var percentVal = '0%';
+                        bar.width(percentVal);
+                        percent.html(percentVal);
+                    }
+                },
+                uploadProgress: function(event, position, total, percentComplete) {
+                    if(file_upload){
+                        var percentVal = percentComplete + '%';
+                        bar.width(percentVal);
+                        percent.html(percentVal);
+                        if(percentComplete == 100)
+                            button.html(waiting_text);
+                    }
+                },
+                success:function(response){
+                    if(!document.getElementById(output)) window[output](response);
+                    else $("#"+output).html(response).fadeIn(200);
+                    button.removeAttr("data-pending");
+                    if(options != undefined && options.waiting_text != undefined && options.waiting_text != '') button.html(before_text);
+                }
+            }).submit();
+        }
+    }
+}
+
+var ajax_output;
+function MioAjax(options,returnResponse,getAjax){
+    if(options.action != undefined && options.action != ''){
+        var button,before_text;
+        if(options.button_element != undefined) button = $(options.button_element);
+
+        if(button){
+            if(button.attr("data-pending") != undefined) return {done:function(){}};
+
+            button.attr("data-pending","true");
+            if(options != undefined && options.waiting_text != undefined && options.waiting_text != ''){
+                before_text  = button.html();
+                button.html(options.waiting_text);
+            }
+        }
+
+        $.ajaxSetup({ cache: false });
+        var form_data = options.form != undefined ? options.form.serialize() : false;
+        var get_data = options.data != undefined ? options.data : form_data;
+        var ajax = $.ajax({
+            url:options.action,
+            method:options.method != undefined && options.method != '' ? options.method : 'GET',
+            data:get_data,
+            cache:false,
+            async:getAjax ? true : false,
+            success:function (result){
+
+                if(button && before_text){
+                    button.removeAttr("data-pending");
+                    button.html(before_text);
+                }
+
+                if(returnResponse){
+                    ajax_output = result;
+                }
+                else{
+                    var output = options.output != undefined ? options.output : "ajax_response";
+                    if(!document.getElementById(output)) window[output](result);
+                    else $("#"+output).html(result).fadeIn(200);
+                }
+            },
+            error: function(xhr, errorString, exception) {
+                console.log("xhr.status="+xhr.status+" error="+errorString+" exception=|"+exception+"|");
+            }
+        });
+
+    }
+    if(getAjax){
+        return ajax;
+    }else if(returnResponse){
+        return ajax_output;
+    }
+    else return false;
+}
+
+$(document).ready(function(){
+    $("a[rel=smooth_scroll]").on('click', function(event) {
+  
+      // Make sure this.hash has a value before overriding default behavior
+      if (this.hash !== "") {
+        // Prevent default anchor click behavior
+        event.preventDefault();
+  
+        // Store hash
+        var hash = this.hash;
+  
+        // Using jQuery's animate() method to add smooth page scroll
+        // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top
+        }, 800, function(){
+     
+          // Add hash (#) to URL when done scrolling (default click behavior)
+          window.location.hash = hash;
+        });
+      } // End if
+    });
+  });

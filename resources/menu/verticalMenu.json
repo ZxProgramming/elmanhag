@@ -1,0 +1,68 @@
+{
+  "menu": [
+    {
+      "name": "Dashboards",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "slug": "dashboard"
+    },
+    {
+      "name": "Travel Agencies",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "slug": "/app/TravelAgency/list"
+    },
+    {
+      "name": "Channel Managers",
+      "icon": "menu-icon tf-icons bx bx-check-shield",
+      "slug": "channel_managers"
+    },
+    {
+      "name": "Users",
+      "icon": "menu-icon tf-icons bx bx-user",
+      "slug": "users"
+    },
+    {
+      "name": "Bookings",
+      "icon": "menu-icon tf-icons bx bx-carousel",
+      "slug": "bookings"
+    },
+    {
+      "name": "Requests",
+      "icon": "menu-icon tf-icons bx bx-support",
+      "slug": "requests"
+    },
+    {
+      "name": "Packages",
+      "icon": "menu-icon tf-icons bx bx-window-open",
+      "slug": "packages"
+    },
+    {
+      "name": "Promo Codes",
+      "icon": "menu-icon tf-icons bx bx-spreadsheet",
+      "slug": "promo_codes"
+    },
+    {
+      "name": "Lists",
+      "icon": "menu-icon tf-icons bx bx-layout",
+      "slug": "lists"
+    },
+    {
+      "name": "Invoices",
+      "icon": "menu-icon tf-icons bx bx-food-menu",
+      "slug": "invoices"
+    },
+    {
+      "name": "Reports",
+      "icon": "menu-icon tf-icons bx bx-file",
+      "slug": "reports"
+    },{
+      "name": "Support",
+      "icon": "menu-icon tf-icons bx bx-support",
+      "slug": "support"
+    },
+    {
+      "name": "Settings",
+      "icon": "menu-icon tf-icons bx bx-cog",
+      "slug": "settings"
+    }
+    ]
+}

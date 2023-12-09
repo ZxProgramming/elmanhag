@@ -1,0 +1,276 @@
+/* The switch - the box around the slider */
+.switch {
+       font-size: 17px;
+       position: relative;
+       display: inline-block;
+       text-align: center;
+       width: 3.5em;
+       height: 1.5em;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+       opacity: 0;
+       width: 0;
+       height: 0;
+}
+
+/* The slider */
+.slider {
+       position: absolute;
+       cursor: pointer;
+       top: 0;
+       left: 0;
+       right: 0;
+       bottom: 0;
+       background-color: #B0B0B0;
+       border: 1px solid #B0B0B0;
+       transition: .4s;
+       border-radius: 32px;
+       outline: none;
+}
+
+.slider:before {
+       position: absolute;
+       content: "";
+       height: 1.6rem;
+       width: 1.5rem;
+       border-radius: 50%;
+       outline: 2px solid #B0B0B0;
+       left: -1px;
+       /* justify-content: space-between; */
+       bottom: -3px;
+       background-color: #fff;
+       transition: transform .25s ease-in-out 0s;
+}
+
+
+.slider-icon {
+       opacity: 0;
+       height: 12px;
+       width: 12px;
+       stroke-width: 8;
+       position: absolute;
+       z-index: 999;
+       stroke: #222222;
+       right: 60%;
+       top: 25%;
+       transition: right ease-in-out .3s, opacity ease-in-out .15s;
+}
+
+input:checked+.slider {
+       background-color: #bc3636;
+}
+
+input:checked+.slider .slider-icon {
+       opacity: 1;
+       right: 8%;
+}
+
+input:checked+.slider:before {
+       transform: translateX(2em);
+       outline: none;
+}
+
+/* Switch///// */
+
+/* Button add */
+
+.button {
+       position: relative;
+       /* width: 120px;
+       height: 40px; */
+       display: flex;
+       padding: 3px 8px;
+       align-items: center;
+       border: none;
+       border-radius: 8px;
+       overflow: hidden;
+       background-color: #69809a;
+       cursor: pointer;
+}
+
+.button__icon {
+       position: absolute;
+       top: 50%;
+       right: -150%;
+       transform: translate(-50%, -50%);
+       height: 100%;
+       width: 100%;
+       color: #fff;
+       font-size: 1.4rem;
+       background-color: #bc3636;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+}
+
+.button,
+.button__icon,
+.button__text {
+       transition: all 0.3s;
+}
+
+.button .button__text {
+       color: #fff;
+       font-weight: 500;
+}
+
+.button:hover {
+       background: #bc3636;
+}
+
+.button:hover .button__text {
+       color: transparent;
+}
+
+.button:hover .button__icon {
+       width: 100%;
+       right: -50%;
+}
+
+/* button Add////  */
+
+/* section checkbox  */
+/* Hide the default checkbox */
+.container-check input {
+       position: absolute;
+       opacity: 0;
+       cursor: pointer;
+       height: 0;
+       width: 0;
+}
+
+.container-check {
+       display: block;
+       position: relative;
+       cursor: pointer;
+       font-size: 20px;
+       user-select: none;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+       position: relative;
+       top: 0;
+       left: 0;
+       height: 0.7em;
+       width: 0.7em;
+       border: 1px solid #948989;
+       background-color: #ffffff;
+       border-radius: 50%;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container-check input:checked~.checkmark {
+       background-color: #bc3636;
+       border: none;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+       content: "";
+       position: absolute;
+       display: none;
+}
+
+/* Show the checkmark when checked */
+.container-check input:checked~.checkmark:after {
+       display: block;
+}
+
+/* Style the checkmark/indicator */
+.container-check .checkmark:after {
+       left: 39%;
+       top: 13%;
+       width: 0.2em;
+       height: 0.4em;
+       border: solid white;
+       border-width: 0 0.15em 0.15em 0;
+       transform: rotate(45deg);
+}
+
+/* section checkbox////  */
+
+
+/* section page  */
+.par {
+       background-color: #e9e9e9;
+       padding: 1.2rem !important;
+       border-radius: 20px;
+}
+
+.section1 {
+       display: flex;
+       flex-direction: column;
+       gap: 20px;
+}
+
+.section2 {
+       display: flex;
+       flex-direction: column;
+       gap: 10px;
+}
+
+.section-end {
+       background-color: red;
+       display: flex;
+       flex-direction: column;
+       gap: 10px;
+}
+
+.filter-btn {
+       display: flex;
+       align-items: flex-end;
+       /* justify-content: start; */
+       justify-content: space-between;
+       gap: 10px;
+}
+
+.filter-btn>button {
+       padding: 0.5rem 3rem;
+       border-radius: 10px;
+       font-size: 1rem;
+       color: white;
+       font-weight: 600;
+}
+
+.chi-section2>span {
+       font-size: 1.2rem;
+}
+
+.pa-slide {
+       display: flex;
+       flex-wrap: wrap;
+       align-items: flex-end;
+       justify-content: space-between;
+}
+
+.slide-bt {
+       display: flex;
+       align-items: center;
+       justify-content: flex-end;
+}
+
+.duration-bt {
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+}
+
+.chec {
+       outline: none;
+       border: none;
+       border-radius: 20px;
+}
+
+.btn-dur {
+       font-size: 12px;
+       line-height: 20px;
+}
+
+#btn-sub{
+
+}
+
+/* section page  */
