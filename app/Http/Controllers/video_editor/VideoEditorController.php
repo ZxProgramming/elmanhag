@@ -63,15 +63,16 @@ class VideoEditorController extends Controller
         }
         else{
             DB::table('proccessing_duration')
-            ->create([
+            ->insert([
                 'progress_date' => $req->u_progress_date4 ,
                 'progress_duration' => $req->u_duration4 ,
                 'done_date' => $req->u_done_date4 ,
                 'done_duration' => $req->u_done_duration4 ,
-                'lesson_id', $req->lesson,
-                'user_id', $req->sel_user4,
+                'lesson_id'=> $req->lesson,
+                'user_id'=> $req->sel_user4,
             ]);
         }
+        session()->flash('success','Data Inserted Sucessfuly');
         return redirect()->back();   
     }
 }
