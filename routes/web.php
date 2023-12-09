@@ -73,6 +73,13 @@ Route::middleware(['auth','auth.Admin'])->group(function(){ // Check About Teach
     Route::get('/dashboard/analytics', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
     Route::get('/dashboard/ecommerce', $controller_path . '\dashboard\Ecommerce@index')->name('dashboard-ecommerce');
          
+    // User Admin 
+    Route::get('/User_Admin', $controller_path . '\UserAdminController@index')->name('User_Admin');
+    Route::post('/User_Admin/Add', $controller_path . '\UserAdminController@add')->name('Add_User_Admin');
+    Route::get('/User_Admin_Add', $controller_path . '\UserAdminController@user_admin_add')->name('User_Admin_Add');
+    Route::post('/editAdminUser/{id}', $controller_path . '\UserAdminController@edit_admin_user')->name('editAdminUser');
+    Route::get('/delAdminUser/{id}', $controller_path . '\UserAdminController@del_admin_user')->name('delAdminUser');
+    
     //  'Lessons'
     //Material  
 Route::get('/Lesson', $controller_path . '\MaterialController@index')->name('lesson');
@@ -192,7 +199,7 @@ Route::get('/Teachers', $controller_path .'\Teacher\DashboardController@index')-
 Route::get('/UserAdmin/dashboard', $controller_path . '\UserAdmin\DashboardController@index')->name('UserAdmin');
 Route::post('/UserAdmin/materialUserAdminAdd', $controller_path . '\UserAdmin\DashboardController@material')->name('materialUserAdminAdd');
 
-Route::get('/UserAdmin/profile', $controller_path . '\UserAdmin\ProfileController@index')->name('UserAdmin');
+Route::get('/UserAdmin/profile', $controller_path . '\UserAdmin\ProfileController@index')->name('UserAdminProfile');
 Route::post('/UserAdmin/profile/Edit/{id}', $controller_path . '\UserAdmin\ProfileController@edit')->name('UAdminEditProfile');
 
 // ___________________________ End User Admin ____________________________________
