@@ -60,6 +60,7 @@ class Kernel extends HttpKernel
     'auth.teacher' => \App\Http\Middleware\TeacherMiddleware::class,
     'auth.videoEditorLead' => \App\Http\Middleware\VideoEditorMiddleWare::class,
     'auth.videoEditor' => \App\Http\Middleware\VideoMiddleware::class,
+    'auth.user_admin' => \App\Http\Middleware\UserAdminMiddleware::class,
     'auth.follow_up' => \App\Http\Middleware\FollowUpMiddleware::class,
     'auth.Admin' =>   \App\Http\Middleware\AdminMiddleWare::class,
     'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
