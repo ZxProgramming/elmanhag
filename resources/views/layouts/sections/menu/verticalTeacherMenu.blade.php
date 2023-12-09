@@ -125,14 +125,15 @@ img.logo-light
 
         <li class="menu-item ">
           <a href="" class="menu-link menu-toggle">
-            <i class="fa fa-dollar menu-icon tf-icons"></i>
+            <i class="menu-icon tf-icons bx bx-user"></i>
             <div>Finance</div>
           </a>
 
           <ul class="menu-sub">
         
            
-            <li class="menu-item ">    
+            <li class="menu-item "> 
+    
                 <a href="{{route('TTransaction')}}" class="menu-link">
                   <div>Transaction</div>
                 </a>

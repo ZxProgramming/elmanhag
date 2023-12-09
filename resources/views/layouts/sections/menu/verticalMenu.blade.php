@@ -163,45 +163,50 @@ $agency = DB::table('travel_agency')->where('id',auth()->id())->first();
                       
                       
                     
+                  
+                    <li class="menu-item ">
+
+                      <a href="" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx bx-user"></i>
+                        <div>Follow Up</div>
+                      </a>
                     
-
-                <li class="menu-item ">
-                  
-                
-                  
-                    <li class="menu-item ">
-                  <a href="" class="menu-link menu-toggle">
-                    <i class="menu-icon tf-icons bx bx-user"></i>
-                    <div>Follow Up</div>
-                  </a>
-                  
-                  <ul class="menu-sub">
-                    <li class="menu-item ">
-
-                      <a href="{{ route('AddFollow') }}" class="menu-link">
+                      <ul class="menu-sub">
+                      <a href="{{ route('LeaderFollows') }}" class="menu-link">
                         <div>Follow up add</div>
                       </a>
-                    </li>
-                    <li class="menu-item ">
                     
                       <a href="{{ route('Follows') }}" class="menu-link ">
                         <div>Follow up list </div>
                       </a>
-                    </li>
-                    <li class="menu-item ">
-
+                      
                       <a href="{{ route('AddFollow') }}" class="menu-link">
                         <div>Follow leader up</div>
                       </a>
-                    </li>
-                    <li class="menu-item ">
-
                       <a href="{{ route('add_follow_leader') }}" class="menu-link">
                         <div>Follow leader up add</div>
                       </a>
+                      </ul>
                     </li>
+                  
+                  <li class="menu-item ">
+
+                    <a href="" class="menu-link menu-toggle">
+                      <i class="menu-icon tf-icons bx bx-user"></i>
+                      <div>User Admin</div>
+                    </a>
+                  
+                    <ul class="menu-sub">
+                    <a href="{{ route('User_Admin_Add') }}" class="menu-link">
+                      <div>User Admin add</div>
+                    </a>
+                  
+                    <a href="{{ route('User_Admin') }}" class="menu-link ">
+                      <div>User Admin list </div>
+                    </a>
+                     
                     </ul>
-                    </li>
+                  </li>
               
                 
 
@@ -344,10 +349,10 @@ $agency = DB::table('travel_agency')->where('id',auth()->id())->first();
                       </a>
             
                       <ul class="menu-sub">
-                        <a href="{{route('PendingPayout')}}" class="menu-link">
-                          <div> Pending payouts </div>
+                        <a href="{{route('teacher_show')}}" class="menu-link">
+                          <div> Bending payouts </div>
                         </a>
-                        <a href="{{route('RejectedPayout')}}" class="menu-link">
+                        <a href="{{route('teacher_show')}}" class="menu-link">
                           <div> Rejected payouts </div>
                         </a>
                       
@@ -425,17 +430,29 @@ $agency = DB::table('travel_agency')->where('id',auth()->id())->first();
 
                 <li class="menu-item ">
                   
-                
+                  <a href="" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-user"></i>
+                    <div>Bookings</div>
+                  </a>
 
                   <ul class="menu-sub">
                     <li class="menu-item ">
-                   
+                      <a href="" class="menu-link menu-toggle">
+                        <i class=""></i>
+                        <div>All Bookings</div>
+                      </a>
                         <ul class="menu-sub">
                               <li class="menu-item ">
-                           
+                              <a href="" class="menu-link">
+                                <i class=""></i>
+                                <div>Upcoming</div>
+                              </a>
                             </li>
                             <li class="menu-item ">
-                          
+                              <a href="" class="menu-link">
+                                <i class=""></i>
+                                <div>Past</div>
+                              </a>
                             </li>
                         </ul>
                     </li>
@@ -443,13 +460,22 @@ $agency = DB::table('travel_agency')->where('id',auth()->id())->first();
 
                   <ul class="menu-sub">
                     <li class="menu-item ">
-                    
+                      <a href="" class="menu-link menu-toggle">
+                        <i class=""></i>
+                        <div>New Bookings</div>
+                      </a>
                         <ul class="menu-sub">
                             <li class="menu-item ">
-                          
+                              <a href="" class="menu-link">
+                                <i class=""></i>
+                                <div>Manual Booking</div>
+                              </a>
                             </li>
                             <li class="menu-item ">
-                            
+                              <a href="" class="menu-link">
+                                <i class=""></i>
+                                <div>Booking Engine</div>
+                              </a>
                             </li>
 
 
@@ -460,28 +486,47 @@ $agency = DB::table('travel_agency')->where('id',auth()->id())->first();
                   <ul class="menu-sub">
                     
                     <li class="menu-item ">
-                  
+                      <a href="" class="menu-link">
+                        <i class=""></i>
+                        <div>Operations</div>
+                      </a>
                     </li>
                   </ul>
                   
 
                 <li class="menu-item ">
 
-                  
+                  <a href="" class="menu-link">
+
+                    <i class="menu-icon tf-icons bx bx-import"></i>
+                    <div>Requests</div>
+                  </a>
                 </li>
 
-               <li class="menu-item ">
-                
+                  <li class="menu-item ">
+                  <a href="" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-import"></i>
+                    <div>Requests</div>
+                  </a>
 
                   <ul class="menu-sub">
                     <li class="menu-item ">
-                     
+                      <a href="" class="menu-link">
+                        <i class=""></i>
+                        <div>Request List</div>
+                      </a>
                     </li>
                     <li class="menu-item ">
-                    
+                      <a href="" class="menu-link">
+                        <i class=""></i>
+                        <div>New Request</div>
+                      </a>
                     </li>
                     <li class="menu-item ">
-                    
+                      <a href="" class="menu-link">
+                        <i class=""></i>
+                        <div>Work Station</div>
+                      </a>
                     </li>
                   </ul>
                 </li>
@@ -892,18 +937,19 @@ $agency = DB::table('travel_agency')->where('id',auth()->id())->first();
   <li class="menu-item ">
     <a href="" class="menu-link menu-toggle">
       <i class="menu-icon tf-icons bx bx-user"></i>
-      <div>Sign Up</div>
+      <div>Education</div>
     </a>
 
     <ul class="menu-sub">
-        <a href="{{route('addFollowUp')}}" class="menu-link">
+      <li class="menu-item">
+        <a href="{{route('subjects')}}" class="menu-link">
     
-          <div class="ml-10"> <i class="fa-solid fa-circle-plus "></i>  Add New SignUp   </div>  
+          <div>Subjects</div>
         </a>
+      </li>
       <li class="menu-item ">
-        <a href="{{route('FPayout')}}" class="menu-link">
-         
-          <div>Sign Up Payout</div>
+        <a href="{{route('categories')}}" class="menu-link">
+          <div>Categories</div>
         </a>
 
 
@@ -953,6 +999,13 @@ $agency = DB::table('travel_agency')->where('id',auth()->id())->first();
   </li>
 
 
+  <li class="menu-item ">
+    <a href="{{route('ve_l_profile')}}" class="menu-link">
+      <i class="menu-icon tf-icons bx bx-user"></i>
+      <div>Profile</div>
+    </a>
+  </li>
+
 
 
 
@@ -965,7 +1018,7 @@ $agency = DB::table('travel_agency')->where('id',auth()->id())->first();
 
     <ul class="menu-sub">
       <li class="menu-item">
-        <a href="{{route('subjects')}}" class="menu-link">
+        <a href="{{route('videoEditorLeadSubjects')}}" class="menu-link">
     
           <div>Subjects</div>
         </a>
@@ -1030,14 +1083,14 @@ $agency = DB::table('travel_agency')->where('id',auth()->id())->first();
   <li class="menu-item ">
     <a href="" class="menu-link menu-toggle">
       <i class="menu-icon tf-icons bx bx-user"></i>
-      <div>Material</div>
+      <div>Education</div>
     </a>
 
     <ul class="menu-sub">
       <li class="menu-item">
-        <a href="{{ route('profile') }}" class="menu-link">
+        <a href="{{route('subjects')}}" class="menu-link">
     
-          <div>Settings</div>
+          <div>Subjects</div>
         </a>
       </li>
       <li class="menu-item ">

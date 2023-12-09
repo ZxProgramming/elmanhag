@@ -18,7 +18,8 @@ Route::post('/lesson_history_data', $controller_path . '\MaterialController@hist
 Route::post('/Teachers/teacher_lesson_data', $controller_path . '\Teacher\MaterialsController@teacher_lesson_data')->name('Tteacher_lesson_data');
 
 Route::post('/lesson_user_data', $controller_path . '\video_editor\VideoEditorController@lesson_user_data')->name('lesson_user_data');
+Route::post('/videoEditorLead/lesson_v_data', $controller_path . '\VideoLead\VideoController@lesson_v_data')->name('lesson_v_data');
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    
     return $request->user();
 });

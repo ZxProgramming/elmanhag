@@ -28,8 +28,12 @@ $controller_path = 'App\Http\Controllers';
         
       });
       Route::middleware(['auth','auth.videoEditorLead']  )->group(function(){ // Check About Video Editor Login
-          Route::controller(VideoController::class)->group(function(){
-              Route::get('videoEditorLead/dashboard','index')->name('videoEditorLead');
+          Route::controller(VideoController::class)->group(function(){ 
+            Route::get('videoEditorLead/dashboard','index')->name('videoEditorLead');
+            Route::post('videoEditorLead/video_lead_add','video_lead_add')->name('video_lead_add');
+            Route::get('videoEditorLead/subjects','subjects')->name('videoEditorLeadSubjects');
+            Route::get('videoEditorLead/Profile','profile')->name('ve_l_profile');
+            Route::post('videoEditorLead/dashboard_add','video_lead_material')->name('video_lead_material');
           });
       });
 
