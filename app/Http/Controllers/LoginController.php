@@ -66,6 +66,9 @@ $user = DB::table('users')->where('email',$request->email)->first();
        }elseif($user->position == 'follow_up'){
 
          return redirect()->route('follow_up')->with(['succes'=>'Logged In']);
+       }elseif($user->position == 'user_admin'){
+
+         return redirect()->route('UserAdmin')->with(['succes'=>'Logged In']);
 
        }
 
