@@ -36,6 +36,7 @@ class BundelController extends Controller
             'paid' => $paid,
             'free' => $free,
             'Active' => $activate,
+            'teacher_precentage' => $req->teacher_precentage,
           ]);
 
           foreach( $req->subject_id as $item ){
@@ -64,12 +65,8 @@ class BundelController extends Controller
    
     public function editAtivatonsBundle( Request $request)
     {
-
-      
-            
       $update = DB::table('bundle')->where('id', $request->id)->update([
         'Active' => $request->Active,
-      
       ]);
              
       
@@ -77,6 +74,8 @@ class BundelController extends Controller
         return redirect()->back();
       }
     }
+
+
     public function editBundle( Request $request)
     {
      if($request->free == null){
@@ -109,6 +108,7 @@ class BundelController extends Controller
       $update = DB::table('bundle')->where('id', $request->id)->update([
         'price' => $request->bundlePrice,
         'name' => $request->bundleName,
+        'teacher_precentage' => $request->teacher_precentage,
    
       ]);
         return redirect()->back();
