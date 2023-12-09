@@ -643,7 +643,10 @@
             {{-- Section2-1 --}}
             <div class="container section2 mt-3 par">
                     {{-- first child --}}
+           <h6 style="color:red;"> You Can't Edit About This Section</h4>
+
                     <div class="col-md-12 row chi1">
+                        
                         {{-- chi-section1 --}}
                         <div class="col-md-4 d-flex align-items-center chi-section1">
                             <span class="col-md-3">Material</span>
@@ -791,6 +794,7 @@
             @else
                 {{-- Secound section-child --}}
                 <div class="col-md-12 row chi2 d-none" id="chi2">
+                    <h6 style="color:red;"> You Can't Edit About This Section</h4>
 
                     {{-- chi-section1 --}}
                     <div class="col-md-4 d-flex align-items-center chi-section1">
@@ -976,7 +980,9 @@
             @else
             {{-- Section2-2 --}}
             <div class="container d-flex flex-column mt-3 par d-none" style="gap: 10px" id="chi3">
-              <div class="col-md-12 row chi3">
+                <h6 style="color:red;"> You Can't Edit About This Section</h4>
+         
+                <div class="col-md-12 row chi3">
 
                         {{-- chi-section1 --}}
                         <div class="col-md-4 d-flex align-items-start chi-section1">
@@ -1332,6 +1338,7 @@
                 @else
                     {{-- First section-child --}}
                     <div class="col-md-12 row" id="sec-1">
+                        <h6 style="color:red;"> You Can't Edit About This Section</h4>
 
                         {{-- chi-section1 --}}
                         <div class="col-md-4 d-flex align-items-center chi-section1">
@@ -1478,6 +1485,7 @@
                 @else
                     {{-- Secound section-child --}}
                     <div class="col-md-12 row d-none" id="sec-2">
+                        <h6 style="color:red;"> You Can't Edit About This Section</h4>
 
                         {{-- chi-section1 --}}
                         <div class="col-md-4 d-flex align-items-center chi-section1">
@@ -1629,6 +1637,7 @@
                 @else
                     {{-- Thured section-child --}}
                     <div class="col-md-12 row d-none" id="sec-3">
+                        <h6 style="color:red;"> You Can't Edit About This Section</h4>
 
                         {{-- chi-section1 --}}
                         <div class="col-md-4 d-flex align-items-center chi-section1">
