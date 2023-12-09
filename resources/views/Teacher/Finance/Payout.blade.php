@@ -124,7 +124,7 @@ $TeacherMenu = 12;
                 {{-- Reserved --}}
                 <div class="pay-content">
                     <div class="chil-con">
-                        <input type="number" name="pay-number" id="reserved" value="{{$reserved}}" readonly>
+                        <input type="number" name="pay-number" id="reserved" value="{{$total_earned}}" readonly>
                         <span>EGP</span>
                     </div>
                     <div class="chile-na">
@@ -154,7 +154,7 @@ $TeacherMenu = 12;
                             <div class="pop-con mt-2">
                                 <span>Available balance to pay out</span>
                                 <div class="chil-con">
-                                    <input type="number" name="pay-number" id="available" value="{{$available}}" readonly>
+                                    <input type="number" name="available" id="available" value="{{$available}}" readonly>
                                     <span>EGP</span>
                                 </div>
                             </div>

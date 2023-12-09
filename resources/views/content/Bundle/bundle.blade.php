@@ -105,7 +105,7 @@ window.location = '/delete-lead/' + id;
                       <small class="text-muted float-end">Default label</small>
                     </div>
                     <div class="card-body">
-                      <form action="/add_bundle" method="POST" enctype="multipart/form-data">
+                      <form action="{{route('add_bundle')}}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                         <div class="mb-3">
@@ -116,6 +116,11 @@ window.location = '/delete-lead/' + id;
                         <div class="mb-3">
                             <label class="form-label" for="basic-default-company">Price</label>
                             <input name="price" type="text" class="form-control" id="basic-default-company" placeholder="Price" />
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label" for="basic-default-company">Teacher Precentage</label>
+                            <input name="teacher_precentage" type="text" class="form-control" id="basic-default-company" placeholder="Teacher Percentage" />
                         </div>
 
 

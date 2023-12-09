@@ -248,12 +248,23 @@ $dataCategory= DB::table('categories')->where('id',$item->category_id)->get();
                 Edit
               </button>
             </li>
-      
+            <li class="nav-item">
+              <button
+                type="button"
+                class="nav-link"
+                role="tab"
+                data-bs-toggle="tab"
+                data-bs-target="#navs-top-messages{{ $item->id }}"
+                aria-controls="navs-top-messages"
+                aria-selected="false">
+                Messages
+              </button>
+            </li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane fade show active" id="navs-top-home{{ $item->id }}" role="tabpanel">
                 <table class="table caption-top">
-                    <caption>List of Bundles</caption>
+                    <caption>List of users</caption>
                     <thead>
 
                       <tr>
@@ -262,6 +273,7 @@ $dataCategory= DB::table('categories')->where('id',$item->category_id)->get();
                         <th scope="col">price</th>
                         <th scope="col">Subject</th>
                         <th scope="col">Grade</th>
+                        <th scope="col">Teacher Precentage</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -315,6 +327,10 @@ $dataCategory= DB::table('categories')->where('id',$item->category_id)->get();
                       {{ $categoryBundle->category }}
                       
                       </td>
+                    <td class="list-item">
+                      {{ $item->teacher_precentage }}%
+                      
+                      </td>
                    
                     </tr>
                
@@ -352,12 +368,21 @@ $dataCategory= DB::table('categories')->where('id',$item->category_id)->get();
                           placeholder="{{ $item->price }} EGP" />
                       </div>
                       <div class="mb-3">
+                        <label class="form-label" for="basic-default-company">Teacher Precentage</label>
+
+                        <input type="number" 
+                        class="form-control" 
+                        id="basic-default-company"
+                        name="teacher_precentage" value="{{ $item->teacher_precentage }}"
+                          placeholder="{{ $item->price }} EGP" />
+                      </div>
+                      <div class="mb-3">
                       @if($item->paid == '1' ) 
                                     <div class="form-check form-switch mb-2">
                                       <input class="form-check-input" name="paid"  value = "0"   
                                       type="checkbox" id="paid" checked=''/>
                                       <label class="form-check-label"  for="paid" >
-                                        paid
+                                        paid{{ $item->paid }}
                                       </label>
                                     </div>
                                         @else
@@ -365,19 +390,19 @@ $dataCategory= DB::table('categories')->where('id',$item->category_id)->get();
                                           <input class="form-check-input" name="paid"  value="1" 
                                           type="checkbox" id="paid"/>
                                           <label class="form-check-label" for="paid">
-                                            paid
+                                            paid{{ $item->paid }}
                                           </label>
                                         </div>
 
                                         @endif
 
                                             @if($item->free === '1' ) 
-                                       
+                                            {{ $item->free }}
                                             <div class="form-check form-switch mb-2">
                                               <input class="form-check-input" name="free"  value = "0"   
                                               type="checkbox" id="free{{ $item->free }}" checked=''/>
                                               <label class="form-check-label"  for="free{{ $item->free }}" >
-                                                free
+                                                free{{ $item->free }}
                                               </label>
                                             </div>
                                                 @else
@@ -386,15 +411,7 @@ $dataCategory= DB::table('categories')->where('id',$item->category_id)->get();
                                                   name="free"  value="1" 
                                                   type="checkbox" id="free{{ $item->free }}"/>
                                                   <label class="form-check-label" for="free{{ $item->free }}">
-                                                    free
-                                                  </label>
-                                                </div>
-                                                <div class="form-check form-switch mb-2">
-                                                  <input class="form-check-input" 
-                                                  name="free"  value="1" 
-                                                  type="checkbox" id="free{{ $item->free }}"/>
-                                                  <label class="form-check-label" for="free{{ $item->free }}">
-                                                    free
+                                                    free{{ $item->free }}
                                                   </label>
                                                 </div>
 
@@ -421,7 +438,17 @@ $dataCategory= DB::table('categories')->where('id',$item->category_id)->get();
 
 
 
-            
+            <div class="tab-pane fade" id="navs-top-messages{{ $item->id }}" role="tabpanel">
+              <p>
+                Oat cake chupa chups dragée donut toffee. Sweet cotton candy jelly beans macaroon gummies
+                cupcake gummi bears cake chocolate.
+              </p>
+              <p class="mb-0">
+                Cake chocolate bar cotton candy apple pie tootsie roll ice cream apple pie brownie cake. Sweet
+                roll icing sesame snaps caramels danish toffee. Brownie biscuit dessert dessert. Pudding jelly
+                jelly-o tart brownie jelly.
+              </p>
+            </div>
           </div>
         </div>
 
