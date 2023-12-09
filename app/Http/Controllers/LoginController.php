@@ -70,6 +70,8 @@ $user = DB::table('users')->where('email',$request->email)->first();
 
          return redirect()->route('UserAdmin')->with(['succes'=>'Logged In']);
 
+       }else{
+        return "Error";
        }
 
 

@@ -1,6 +1,6 @@
 
 @php
-    $admin='Minue';
+    $userAdmin='Minue';
 @endphp
 @extends('layouts/layoutMaster')
 
