@@ -194,7 +194,7 @@ Route::get('/Teachers', $controller_path .'\Teacher\DashboardController@index')-
 Route::get('/UserAdmin/dashboard', $controller_path . '\UserAdmin\DashboardController@index')->name('UserAdmin');
 Route::post('/UserAdmin/materialUserAdminAdd', $controller_path . '\UserAdmin\DashboardController@material')->name('materialUserAdminAdd');
 
-Route::get('/UserAdmin/profile', $controller_path . '\UserAdmin\ProfileController@index')->name('UserAdmin');
+Route::get('/UserAdmin/profile', $controller_path . '\UserAdmin\ProfileController@index')->name('user_admin_profile');
 Route::post('/UserAdmin/profile/Edit/{id}', $controller_path . '\UserAdmin\ProfileController@edit')->name('UAdminEditProfile');
 
 // ___________________________ End User Admin ____________________________________

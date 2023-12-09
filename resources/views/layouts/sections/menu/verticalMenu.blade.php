@@ -1132,6 +1132,76 @@ $agency = DB::table('travel_agency')->where('id',auth()->id())->first();
             
 
 @endisset
+@isset($userAdmin)
+<ul class="menu-inner py-1">
+  <li class="menu-item ">
+    <a href="{{route('UserAdmin')}}" class="menu-link">
+
+      <i class=" menu-icon tf-icons bx bx-home-circle">
+
+      </i>
+
+      <div>Dashboards <span style="color: #21b93b;"></span></div>
+    </a>
+  </li>
+
+
+
+
+
+
+  <li class="menu-item ">
+    <a href="" class="menu-link menu-toggle">
+      <i class="menu-icon tf-icons bx bx-user"></i>
+      <div>Setting</div>
+    </a>
+
+    <ul class="menu-sub">
+      <li class="menu-item">
+        <a href="{{route('user_admin_profile')}}" class="menu-link">
+    
+          <div>Profile</div>
+        </a>
+      </li>
+      <li class="menu-item ">
+        <a href="{{route('categories')}}" class="menu-link">
+          <div>Categories</div>
+        </a>
+
+
+
+  <li class="menu-item ">
+    <a href="" class="menu-link menu-toggle">
+      <i class=" tf-icons bx bx-user"></i>
+      <div>Bundle</div>
+    </a>
+
+    <ul class="menu-sub">
+      <a href="{{route('bundle_show')}}" class="menu-link">
+        <div>All Bundles</div>
+      </a>
+      <li class="menu-item ">
+        <a href="{{route('bundle')}}" class="menu-link ">
+          <div>Add Bundle</div>
+        </a>
+      </li>
+    </ul>
+
+  </li>
+
+    </ul>
+
+  </li>
+
+
+
+
+
+
+
+            
+
+@endisset
 @show
 
 

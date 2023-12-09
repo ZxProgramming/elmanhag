@@ -1,7 +1,7 @@
 @extends('layouts/layoutMaster')
 
 @php
-    $admin='Minue';
+$userAdmin='Minue';
 @endphp
 @section('title', 'Teacher')
 
