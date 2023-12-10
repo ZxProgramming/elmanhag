@@ -172,8 +172,11 @@ class MaterialController extends Controller
         ->leftJoin('users', 'proccessing_duration.user_id', '=', 'users.id')
         ->where('lesson_id', $req->lesson_id)
         ->get();
-
-        return $arr;
+        $arr1 = DB::table('contents')
+        ->where('id', $req->lesson_id)
+        ->first();
+        $arr2 = [$arr1->week, date('M', strtotime($arr1->month))];
+        return [$arr, $arr2];
     }
 
     public function history_data( Request $req ){

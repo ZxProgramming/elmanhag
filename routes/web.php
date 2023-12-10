@@ -202,8 +202,12 @@ Route::get('/Teachers', $controller_path .'\Teacher\DashboardController@index')-
 Route::get('/UserAdmin/dashboard', $controller_path . '\UserAdmin\DashboardController@index')->name('UserAdmin');
 Route::post('/UserAdmin/materialUserAdminAdd', $controller_path . '\UserAdmin\DashboardController@material')->name('materialUserAdminAdd');
 
+<<<<<<< HEAD
 Route::get('/UserAdmin/user_admin_profile', $controller_path . '\UserAdmin\ProfileController@index')->name('user_admin_profile');
 // Route::get('/UserAdmin/profile', $controller_path . '\UserAdmin\ProfileController@index')->name('UserAdminProfile');
+=======
+Route::get('/UserAdmin/profile', $controller_path . '\UserAdmin\ProfileController@index')->name('user_admin_profile');
+>>>>>>> 2ffc00eb7df48e4bb9e60b117c628d79de08866e
 Route::post('/UserAdmin/profile/Edit/{id}', $controller_path . '\UserAdmin\ProfileController@edit')->name('UAdminEditProfile');
 
 // ___________________________ End User Admin ____________________________________
