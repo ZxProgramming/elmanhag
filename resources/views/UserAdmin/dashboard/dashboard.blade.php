@@ -544,7 +544,7 @@ $userAdmin='Minue';
                             <div class="col-md-4 filter-btn">   
                                 <div class="col-md-7 d-flex justify-content-between">
                                     <span class="p-1">Due Date</span>
-                                    <input type="text" class="btn col-md-6 p-1" id="due-date" value="12/10"/>
+                                    <span class="due_date"></span>
                                 </div>
                                 <div class="col-md-4 d-flex justify-content-end">
                                     <button type="button" class="btn btn-secondary filter_btn" id="btn-filter" style="width: 100%">Filter</button>
@@ -1774,6 +1774,7 @@ $userAdmin='Minue';
     </div>
 </form>
                             <script>
+                                let due_date = document.querySelector('.due_date');
                                 let filter_btn = document.querySelector('.filter_btn');
                                 let sel_grade = document.querySelector('.sel_grade');
                                 let sel_year = document.querySelector('.sel_year');
@@ -1792,7 +1793,12 @@ $userAdmin='Minue';
                                         type: 'POST',
                                         url: "{{route('lesson_data')}}",
                                         data: obj,
-                                        success:function(data){
+                                        success:function(res){
+                                            let data = res[0];
+                                            let lesson = res[1];
+                                            due_date.innerHTML = `
+                                            W: ${lesson[0]} M: ${lesson[1]}
+                                            `;
                                             data.forEach(item => {
                                                 if ( item.material == 'material' ) {
                                                     updates_val = [...updates_val, 'material']
