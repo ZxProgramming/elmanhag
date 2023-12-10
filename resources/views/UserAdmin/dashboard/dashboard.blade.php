@@ -2,8 +2,9 @@
 
 @php
 $userAdmin='Minue';
+$menuHorizontal='f';
 @endphp
-@section('title', 'Teacher')
+@section('title', 'Video Editor')
 
 @section('vendor-style')
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css') }}">
@@ -71,7 +72,8 @@ $userAdmin='Minue';
     <script src="../../assets/js/forms-selects.js"></script>
     <script src="../../assets/js/forms-tagify.js"></script>
     <script src="../../assets/js/forms-typeahead.js"></script>
-
+<!--<script src="{{ asset('assets/js/ui-modals.js') }}"></script>-->
+<!--<script src="{{ asset('assets/js/app-user-list.js') }}"></script>-->
 @endsection
 
 
@@ -478,6 +480,7 @@ $userAdmin='Minue';
     <!--<script src="{{ asset('assets/js/ui-modals.js') }}"></script>-->
     <!--<script src="{{ asset('assets/js/app-user-list.js') }}"></script>-->
 @endsection
+ @section('content')
 
 <div class="card">
     @if (session()->has('msg'))
@@ -1773,6 +1776,7 @@ $userAdmin='Minue';
         </div>
     </div>
 </form>
+
                             <script>
                                 let filter_btn = document.querySelector('.filter_btn');
                                 let sel_grade = document.querySelector('.sel_grade');

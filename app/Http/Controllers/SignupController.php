@@ -31,7 +31,7 @@ class SignupController extends Controller
     }
 
     public function add_signup( Request $req ){
-        $pass = encrypt($req->password);
+        $pass = bcrypt($req->password);
         
         $data = $req->validate([
           "user_name" => 'required|string',

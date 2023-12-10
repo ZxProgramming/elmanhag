@@ -15,6 +15,7 @@ class UserAdminController extends Controller
         
         return view('content.Admins.AdminList',
         compact('users'));
+        
     }
 
     public function del_admin_user( $id){
@@ -73,7 +74,7 @@ class UserAdminController extends Controller
                 $arr['image'] = $img_name;
             }
         }
-        $arr['password'] = encrypt($req->password);
+        $arr['password'] = bcrypt($req->password);
         $arr['position'] = 'user_admin';
         $data = DB::table('users')
         ->insertGetId($arr);

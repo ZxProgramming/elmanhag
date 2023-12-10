@@ -72,6 +72,7 @@ Route::middleware(['auth','auth.Admin'])->group(function(){ // Check About Teach
     Route::get('/', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
     Route::get('/dashboard/analytics', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
     Route::get('/dashboard/ecommerce', $controller_path . '\dashboard\Ecommerce@index')->name('dashboard-ecommerce');
+    Route::get('/dashboard/profile_admin', $controller_path . '\dashboard\Analytics@profileAdmin')->name('profile_admin');
          
     // User Admin 
     Route::get('/User_Admin', $controller_path . '\UserAdminController@index')->name('User_Admin');
@@ -201,8 +202,8 @@ Route::get('/Teachers', $controller_path .'\Teacher\DashboardController@index')-
 Route::get('/UserAdmin/dashboard', $controller_path . '\UserAdmin\DashboardController@index')->name('UserAdmin');
 Route::post('/UserAdmin/materialUserAdminAdd', $controller_path . '\UserAdmin\DashboardController@material')->name('materialUserAdminAdd');
 
-Route::get('/UserAdmin/profile', $controller_path . '\UserAdmin\ProfileController@index')->name('user_admin_profile');
-Route::get('/UserAdmin/profile', $controller_path . '\UserAdmin\ProfileController@index')->name('UserAdminProfile');
+Route::get('/UserAdmin/user_admin_profile', $controller_path . '\UserAdmin\ProfileController@index')->name('user_admin_profile');
+// Route::get('/UserAdmin/profile', $controller_path . '\UserAdmin\ProfileController@index')->name('UserAdminProfile');
 Route::post('/UserAdmin/profile/Edit/{id}', $controller_path . '\UserAdmin\ProfileController@edit')->name('UAdminEditProfile');
 
 // ___________________________ End User Admin ____________________________________

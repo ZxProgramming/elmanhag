@@ -458,12 +458,22 @@ $containerNav = $containerNav ?? 'container-fluid';
                   <span class="align-middle">My Profile</span>
                 </a>
                 @elseif(auth()->user()->position == 'admin')
-                <a class="dropdown-item" href="">
+                <a class="dropdown-item" href="{{ route('profile_admin') }}">
                   <i class="bx bx-user me-2"></i>
                   <span class="align-middle">My Profile</span>
                 </a>
                 @elseif(auth()->user()->position == 'video editor')
                 <a class="dropdown-item" href="{{ route('profile') }}">
+                  <i class="bx bx-user me-2"></i>
+                  <span class="align-middle">My Profile</span>
+                </a>
+                @elseif(auth()->user()->position == 'video editor leader')
+                <a class="dropdown-item" href="{{ route('ve_l_profile') }}">
+                  <i class="bx bx-user me-2"></i>
+                  <span class="align-middle">My Profile</span>
+                </a>
+                @elseif(auth()->user()->position == 'user_admin')
+                <a class="dropdown-item" href="{{ route('user_admin_profile') }}">
                   <i class="bx bx-user me-2"></i>
                   <span class="align-middle">My Profile</span>
                 </a>

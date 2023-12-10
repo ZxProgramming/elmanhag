@@ -49,7 +49,7 @@ class FollowUpController extends Controller
             'phone' => $req->phone,
             'email' => $req->email,
             'identity' => $req->ID,
-            'password' => encrypt($req->password) ,
+            'password' => bcrypt($req->password) ,
             'image' => $img_name ?? 'default.png',
             'position' => 'follow_up'
         ]);
@@ -96,7 +96,7 @@ class FollowUpController extends Controller
             'phone' => $req->phone,
             'email' => $req->email,
             'identity' => $req->ID,
-            'password' => encrypt($req->password) ,
+            'password' => bcrypt($req->password) ,
             'image' => $img_name ?? 'default.png',
             'position'=> 'follow_up_lead'
         ]);

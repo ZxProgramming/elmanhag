@@ -1164,36 +1164,39 @@ $agency = DB::table('travel_agency')->where('id',auth()->id())->first();
         </a>
       </li>
       <li class="menu-item ">
-        <a href="{{route('categories')}}" class="menu-link">
+        {{-- <a href="{{route('categories')}}" class="menu-link">
           <div>Categories</div>
-        </a>
+        </a> --}}
 
 
 
   <li class="menu-item ">
-    <a href="" class="menu-link menu-toggle">
+    {{-- <a href="" class="menu-link menu-toggle">
       <i class=" tf-icons bx bx-user"></i>
       <div>Bundle</div>
-    </a>
+    </a> --}}
 
     <ul class="menu-sub">
       <a href="{{route('bundle_show')}}" class="menu-link">
         <div>All Bundles</div>
       </a>
       <li class="menu-item ">
-        <a href="{{route('bundle')}}" class="menu-link ">
+        {{-- <a href="{{route('bundle')}}" class="menu-link ">
           <div>Add Bundle</div>
-        </a>
+        </a> --}}
       </li>
     </ul>
 
   </li>
+  
 
     </ul>
-
+    <a href="{{route('login.destroy')}}" class="menu-link">
+      <div>Log Out &nbsp; <i class="fa-solid fa-right-from-bracket"></i></div>
+    </a>
   </li>
 
-
+  
 
 
 

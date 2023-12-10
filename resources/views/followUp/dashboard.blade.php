@@ -394,8 +394,7 @@
         ©
         <script>
             document.write(new Date().getFullYear());
-        </script>2023
-        , made with ❤️ by
+        </script>
         <a href="https://pixinvent.com" target="_blank" class="footer-link fw-semibold">PIXINVENT</a>
         </div>
         <div>
