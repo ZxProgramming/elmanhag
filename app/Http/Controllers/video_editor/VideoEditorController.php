@@ -39,8 +39,12 @@ class VideoEditorController extends Controller
         ->where('user_id', $req->user_id)
         ->where('lesson_id', $req->lesson_id)
         ->get();
-
-        return $data;
+        $arr1 = DB::table('contents')
+        ->where('id', $req->lesson_id)
+        ->first();
+        $arr2 = [$arr1->week, date('M', strtotime($arr1->month))];
+        
+        return [$data, $arr2];
     }
 
     public function video_add( Request $req ){
