@@ -38,7 +38,7 @@ class ProfileController extends Controller
            
         }
         if ( !empty($req->password) ) {
-            $arr['password'] = encrypt($req->password);
+            $arr['password'] = bcrypt($req->password);
         }
         DB::table('users')
         ->where('id', $id)

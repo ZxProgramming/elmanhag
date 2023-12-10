@@ -1,9 +1,10 @@
 
+
+@extends('layouts/layoutMaster')
 @php
     $userAdmin='Minue';
+    $menuHorizontal='FollowUp';
 @endphp
-@extends('layouts/layoutMaster')
-
 @section('title', 'Teacher')
 
 @section('vendor-style')

@@ -30,7 +30,7 @@ class DashboardController extends Controller
         ->where('position', 'video editor leader')
         ->get();
         $premisions = DB::table('user_admin_permitions')
-        ->where('user_id', 13)
+        ->where('user_id', auth()->user()->id)
         ->pluck('premition');
         $premisions = json_decode($premisions);
         return view('UserAdmin.dashboard.dashboard', compact('years', 

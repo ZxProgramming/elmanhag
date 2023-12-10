@@ -10,7 +10,7 @@ class ProfileController extends Controller
 {
     public function index(){
         $user = DB::table('users')
-        ->where('id', 13)
+        ->where('id', auth()->user()->id)
         ->first();
 
         return view('UserAdmin.profile.Profile',
@@ -38,7 +38,7 @@ class ProfileController extends Controller
            
         }
         if ( !empty($req->password) ) {
-            $arr['password'] = encrypt($req->password);
+            $arr['password'] = bcrypt($req->password);
         }
         DB::table('users')
         ->where('id', $id)

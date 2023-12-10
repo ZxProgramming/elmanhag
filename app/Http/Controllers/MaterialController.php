@@ -76,7 +76,7 @@ class MaterialController extends Controller
             'v_email' => 'email|required',
             'v_password' => 'min:8|required',
         ]);
-        $pass = encrypt($data['v_password']);
+        $pass = bcrypt($data['v_password']);
         $arr = [
             'name' => $req->v_name,
             'password' => $pass,
@@ -135,7 +135,7 @@ class MaterialController extends Controller
             'sales' => $req->sales,
         ];
         if ( !empty($req->password) ) {
-            $pass = encrypt($req->password);
+            $pass = bcrypt($req->password);
             $arr['password'] = $pass;
         }
         DB::table('users')

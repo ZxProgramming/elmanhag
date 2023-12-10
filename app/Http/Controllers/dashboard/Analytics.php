@@ -67,4 +67,9 @@ class Analytics extends Controller
       return redirect()->route('categories');
     }
   }
+
+      public function profileAdmin(){
+    return view('content.dashboard.profile_admin');
+
+      }
 }
