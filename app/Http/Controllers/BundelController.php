@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class BundelController extends Controller
 {
-    
+    // Comment
     public function index(){
         $dataSubjects = DB::table('subjects')->get();
         $dataCategories = DB::table('categories')->where('status','0')->get();
