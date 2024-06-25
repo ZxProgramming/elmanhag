@@ -4,9 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\laravel_example\UserManagement;
 use App\Http\Controllers\frontendController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SignupController;
 use App\Http\Controllers\VideoLead\VideoController;
 use App\Http\Controllers\follow_up\FollowUpDashboardController;
 use App\Http\Controllers\video_editor\VideoEditorController;
+
+use App\Http\Controllers\Student\DashboardController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +31,12 @@ $controller_path = 'App\Http\Controllers';
         Route::get('/logout','destroy')->name('login.destroy');
         
       });
+      
+      Route::controller(SignupController::class)->group(function(){
+        Route::get('/Signup','sign_up')->name('sign_up');
+        Route::post('/Signup/Add','sign_up_add')->name('sign_up_add');
+      });
+
       Route::middleware(['auth','auth.videoEditorLead']  )->group(function(){ // Check About Video Editor Login
           Route::controller(VideoController::class)->group(function(){ 
             Route::get('videoEditorLead/dashboard','index')->name('videoEditorLead');
@@ -37,14 +47,15 @@ $controller_path = 'App\Http\Controllers';
           });
       });
 
-        Route::middleware('auth','auth.videoEditor')->group(function(){
-            Route::controller(VideoEditorController::class)->group(function(){
-              Route::get('VideoEditor/dashboard','index')->name('videoEditor');
-              Route::get('VideoEditor/profile','profileEdit')->name('profile');
-              Route::post('VideoEditor/video_add','video_add')->name('video_add');
+      Route::middleware('auth','auth.videoEditor')->group(function(){
+          Route::controller(VideoEditorController::class)->group(function(){
+            Route::get('VideoEditor/dashboard','index')->name('videoEditor');
+            Route::get('VideoEditor/profile','profileEdit')->name('profile');
+            Route::post('VideoEditor/video_add','video_add')->name('video_add');
 
-            });
-        });
+          });
+      });
+
       Route::middleware(['auth','auth.follow_up']  )->group(function(){ // Check About Follow Up
       $controller_path = 'App\Http\Controllers';
           Route::controller(FollowUpDashboardController::class)->group(function(){
@@ -199,14 +210,24 @@ Route::get('/Teachers', $controller_path .'\Teacher\DashboardController@index')-
        $controller_path = 'App\Http\Controllers';
        // _____________________________ User Admin ______________________________________
 
-Route::get('/UserAdmin/dashboard', $controller_path . '\UserAdmin\DashboardController@index')->name('UserAdmin');
-Route::post('/UserAdmin/materialUserAdminAdd', $controller_path . '\UserAdmin\DashboardController@material')->name('materialUserAdminAdd');
+        Route::get('/UserAdmin/dashboard', $controller_path . '\UserAdmin\DashboardController@index')->name('UserAdmin');
+        Route::post('/UserAdmin/materialUserAdminAdd', $controller_path . '\UserAdmin\DashboardController@material')->name('materialUserAdminAdd');
 
-Route::get('/UserAdmin/user_admin_profile', $controller_path . '\UserAdmin\ProfileController@index')->name('user_admin_profile');
-// Route::get('/UserAdmin/profile', $controller_path . '\UserAdmin\ProfileController@index')->name('UserAdminProfile');
-Route::get('/UserAdmin/profile', $controller_path . '\UserAdmin\ProfileController@index')->name('user_admin_profile');
-Route::post('/UserAdmin/profile/Edit/{id}', $controller_path . '\UserAdmin\ProfileController@edit')->name('UAdminEditProfile');
+        Route::get('/UserAdmin/user_admin_profile', $controller_path . '\UserAdmin\ProfileController@index')->name('user_admin_profile');
+        // Route::get('/UserAdmin/profile', $controller_path . '\UserAdmin\ProfileController@index')->name('UserAdminProfile');
+        Route::get('/UserAdmin/profile', $controller_path . '\UserAdmin\ProfileController@index')->name('user_admin_profile');
+        Route::post('/UserAdmin/profile/Edit/{id}', $controller_path . '\UserAdmin\ProfileController@edit')->name('UAdminEditProfile');
 
-// ___________________________ End User Admin ____________________________________
+        // ___________________________ End User Admin ____________________________________
 
-        });
+});
+
+
+// __________________________ Start Student _______________________________________
+
+Route::middleware('auth', 'auth.student')->group(function(){
+  Route::controller(DashboardController::class)->prefix('Live')->group(function(){
+    Route::get('/', 'index')->name('stu_dashboard');
+  });
+});
+// __________________________ Start Student _______________________________________

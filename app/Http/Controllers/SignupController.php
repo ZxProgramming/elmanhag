@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class SignupController extends Controller
 {
@@ -140,4 +141,66 @@ class SignupController extends Controller
 
         return redirect()->back();
     }
+
+    public function sign_up(){
+        $country = DB::table('location')->get();
+        $city = DB::table('city')->get();
+        $category = DB::table('categories')->where('status', '!=', '0')->get();
+        return view('signup', compact('country', 'city', 'category'));
+    }
+
+    public function sign_up_add( Request $req ){
+        
+        $email = DB::table('users')->where('email', $req->email)
+        ->first();
+        if ( $email ) {
+            session()->flash('faild', 'الايميل موجود بالفعل');
+            return redirect()->back();
+        }
+        $data = $req->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'parent_name' => 'required',
+            'parent_phone' => 'required',
+            'city_id' => 'required',
+            'category_id' => 'required',
+            'type' => 'required',
+        ]);
+
+        if ( $req->password != $req->conf_password ) {
+            session()->flash('faild', 'تأكيد الباسورد خطأ');
+            return redirect()->back();
+        }
+
+        if ( $req->password != $req->conf_password ) {
+            session()->flash('faild', 'تأكيد الباسورد خطأ');
+            return redirect()->back();
+        }
+
+        $password = bcrypt($req->password);
+
+        $user_id = DB::table('users')->insertGetId([
+            'name' => $req->name,
+            'phone' => $req->phone,
+            'email' => $req->email,
+            'password' => $password,
+            'parent_name' => $req->parent_name,
+            'parent_phone' => $req->parent_phone,
+            'city_id' => $req->city_id,
+            'category_id' => $req->category_id,
+            'type' => $req->type,
+        ]);
+        
+        $user = DB::table('users')->where('id', $user_id)
+        ->first();
+        
+        $authenticated = Auth::guard('education')->attempt([
+            'email' => $user->email,
+            'password' => $user->password
+        ]);
+        return redirect()->route('stu_dashboard')->with(['succes'=>'Logged In']);
+    }
+
 }

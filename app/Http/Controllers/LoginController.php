@@ -68,9 +68,13 @@ $user = DB::table('users')->where('email',$request->email)->first();
          return redirect()->route('follow_up')->with(['succes'=>'Logged In']);
        }elseif($user->position == 'user_admin'){
 
-         return redirect()->route('UserAdmin')->with(['succes'=>'Logged In']);
+        return redirect()->route('UserAdmin')->with(['succes'=>'Logged In']);
 
-       }else{
+      }elseif($user->position == 'student'){
+
+        return redirect()->route('stu_dashboard')->with(['succes'=>'Logged In']);
+
+      }else{
         return "Error";
        }
 
